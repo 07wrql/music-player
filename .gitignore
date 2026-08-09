@@ -30,8 +30,6 @@ secrets.*
 # Keil and compiler outputs
 **/MDK-ARM/Objects/
 **/MDK-ARM/Listings/
-**/MDK-ARM/vs1003b/
-**/MDK-ARM/bootloader/
 *.o
 *.obj
 *.d
@@ -45,6 +43,8 @@ secrets.*
 *.lnp
 *.dep
 *.build_log.htm
+*.htm
+*.iex
 
 # Debugger and IDE state
 *.log

@@ -1,0 +1,21 @@
+; *************************************************************
+; *** APP Direct Boot Scatter File                           ***
+; *** 地址: 0x08010000, 大小: 320KB (S4-S6)                 ***
+; *** 由 BootLoader 跳转至此运行                             ***
+; *** VTOR = 0x08010000 (main.c 中设置)                      ***
+; *************************************************************
+
+LR_IROM1 0x08010000 0x00050000  {    ; APP1 320KB
+  ER_IROM1 0x08010000 0x00050000  {
+   startup_stm32f407xx.o (RESET, +First)  ; APP 使用标准向量表
+   *(InRoot$$Sections)
+   .ANY (+RO +XO)
+  }
+  RW_IRAM1 0x20000000 0x0001C000  {  ; 112KB SRAM1
+   .ANY (+RW +ZI)
+   *.o (ramfunc)
+  }
+  RW_IRAM2 0x2001C000 0x00004000  {  ; 16KB SRAM2 (CCM)
+   .ANY (+RW +ZI)
+  }
+}

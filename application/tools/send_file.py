@@ -6,7 +6,7 @@ PC → STM32 音频文件发送工具 (YModem 协议)
     python send_file.py COM3 song.mp3
 
 步骤:
-    1. 脚本通过串口发送 "RECV" 指令
+    1. 脚本通过串口发送 "#SEND#" 指令
     2. 设备响应 'C' (YModem CRC 模式)
     3. 脚本通过 YModem 协议发送文件
     4. 设备写文件到 SD 卡, 完成后发 "DONE"
@@ -161,8 +161,8 @@ def main():
     print(f"打开串口 {port} @115200")
 
     # 发送触发指令
-    print("发送 RECV 指令...")
-    ser.write(b"RECV\r\n")
+    print("发送 #SEND# 指令...")
+    ser.write(b"#SEND#\r\n")
     ser.flush()
 
     success = send_ymodem(ser, filepath)

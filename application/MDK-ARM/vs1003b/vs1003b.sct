@@ -1,0 +1,20 @@
+; *************************************************************
+; *** APP Scatter File (CubeMX 默认生成, 供修改参考)        ***
+; *** 地址: 0x08010000, 大小: 320KB (S4-S6)                ***
+; *** 编译 APP 时使用 app_direct.sct 或此文件               ***
+; *************************************************************
+
+LR_IROM1 0x08010000 0x00050000  {    ; APP1 320KB
+  ER_IROM1 0x08010000 0x00050000  {
+   startup_stm32f407xx.o (RESET, +First)
+   *(InRoot$$Sections)
+   .ANY (+RO +XO)
+  }
+  RW_IRAM1 0x20000000 0x0001C000  {  ; 112KB SRAM1
+   .ANY (+RW +ZI)
+   *.o (ramfunc)
+  }
+  RW_IRAM2 0x2001C000 0x00004000  {  ; 16KB SRAM2 (CCM)
+   .ANY (+RW +ZI)
+  }
+}
