@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900">
+  <rect width="1400" height="900" fill="#f7f9fc"/>
+  <style>
+    .box{fill:#fff;stroke:#1f2937;stroke-width:2;rx:12}
+    .title{font:700 24px sans-serif;fill:#111827}
+    .head{font:700 18px sans-serif;fill:#111827}
+    .txt{font:15px sans-serif;fill:#374151}
+    .net{font:13px monospace;fill:#1d4ed8}
+    .wire{stroke:#2563eb;stroke-width:2;fill:none}
+    .power{stroke:#dc2626;stroke-width:2;fill:none}
+    .note{font:13px sans-serif;fill:#b45309}
+  </style>
+  <text x="50" y="48" class="title">VS1003B 蓝牙音箱母板 · 初版原理图框图</text>
+  <text x="50" y="76" class="note">按当前工程实际配置：SPI1 → VS1003B，SPI2 → MicroSD；SD MISO 使用 PB14</text>
+
+  <rect x="530" y="130" width="340" height="240" class="box"/>
+  <text x="560" y="165" class="head">F407 主控插座</text>
+  <text x="560" y="195" class="txt">STM32F407 模块直接插接</text>
+  <text x="560" y="230" class="net">PA5/PA6/PA7  VS_SPI</text>
+  <text x="560" y="253" class="net">PA3/PA4/PB0/PB1 VS_CTRL</text>
+  <text x="560" y="276" class="net">PB10/PB14/PC3  SD_SPI</text>
+  <text x="560" y="299" class="net">PC1             SD_CS</text>
+  <text x="560" y="322" class="net">PC13, PD0~PD3   KEY1~KEY5</text>
+  <text x="560" y="345" class="net">3V3 / GND / NRST / SWD</text>
+
+  <rect x="80" y="150" width="300" height="190" class="box"/>
+  <text x="110" y="190" class="head">VS1003B 插座</text>
+  <text x="110" y="225" class="net">SCLK ← PA5</text>
+  <text x="110" y="247" class="net">MISO → PA6</text>
+  <text x="110" y="269" class="net">MOSI ← PA7</text>
+  <text x="110" y="291" class="net">XCS ← PA4   XDCS ← PA3</text>
+  <text x="110" y="313" class="net">DREQ → PB0  XRST ← PB1</text>
+  <text x="110" y="335" class="net">3V3 / GND / LINEOUT_L/R</text>
+
+  <rect x="1020" y="150" width="300" height="190" class="box"/>
+  <text x="1050" y="190" class="head">MicroSD 插座</text>
+  <text x="1050" y="225" class="net">CLK  ← PB10</text>
+  <text x="1050" y="247" class="net">DO   → PB14</text>
+  <text x="1050" y="269" class="net">DI   ← PC3</text>
+  <text x="1050" y="291" class="net">CS   ← PC1</text>
+  <text x="1050" y="313" class="net">3V3 / GND / CD(可选)</text>
+  <text x="1050" y="335" class="note">SPI 信号预留 22~47Ω</text>
+
+  <path d="M530 230 H380" class="wire"/><path d="M870 275 H1020" class="wire"/>
+  <text x="405" y="220" class="net">VS_SCK/MISO/MOSI/CTRL</text>
+  <text x="885" y="265" class="net">SD_SCK/MISO/MOSI/CS</text>
+
+  <rect x="530" y="450" width="340" height="135" class="box"/>
+  <text x="560" y="487" class="head">五个按键</text>
+  <text x="560" y="520" class="net">KEY1 PC13  KEY2 PD0  KEY3 PD1</text>
+  <text x="560" y="544" class="net">KEY4 PD2   KEY5 PD3</text>
+  <text x="560" y="568" class="txt">按下接 GND，GPIO 内部上拉</text>
+  <path d="M700 370 V450" class="wire"/>
+
+  <rect x="80" y="450" width="300" height="135" class="box"/>
+  <text x="110" y="487" class="head">蓝牙模块插座</text>
+  <text x="110" y="520" class="net">BT_VCC / BT_GND</text>
+  <text x="110" y="544" class="net">BT_TX / BT_RX</text>
+  <text x="110" y="568" class="net">BT_EN / BT_STATE</text>
+  <text x="110" y="590" class="note">电压按实际模块确认</text>
+
+  <rect x="1020" y="450" width="300" height="135" class="box"/>
+  <text x="1050" y="487" class="head">音频扩展</text>
+  <text x="1050" y="520" class="net">LINEOUT_L / LINEOUT_R</text>
+  <text x="1050" y="544" class="txt">接功放模块或耳机接口</text>
+  <text x="1050" y="568" class="txt">接口旁预留测试点</text>
+  <path d="M380 520 H530" class="wire"/><path d="M870 520 H1020" class="wire"/>
+
+  <rect x="420" y="690" width="560" height="110" class="box"/>
+  <text x="455" y="728" class="head">电源 / 调试</text>
+  <text x="455" y="758" class="net">POWER_IN → VBUS_5V → 3V3（按电源方案）</text>
+  <text x="455" y="782" class="net">SWDIO / SWCLK / NRST / 3V3 / GND</text>
+  <path d="M700 585 V690" class="power"/>
+  <text x="712" y="640" class="net">3V3 + GND</text>
+</svg>

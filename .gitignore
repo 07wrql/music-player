@@ -1,0 +1,65 @@
+# Credentials and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+credentials.*
+secrets.*
+
+# Personal and private documents
+*.doc
+*.docx
+*.wps
+*.pdf
+*.xls
+*.xlsx
+*.ppt
+*.pptx
+
+# Keil user settings
+*.uvguix.*
+*.uvgui.*
+*.uvguix
+*.uvgui
+
+# Keil and compiler outputs
+**/MDK-ARM/Objects/
+**/MDK-ARM/Listings/
+**/MDK-ARM/vs1003b/
+**/MDK-ARM/bootloader/
+*.o
+*.obj
+*.d
+*.crf
+*.axf
+*.elf
+*.hex
+*.bin
+*.map
+*.lst
+*.lnp
+*.dep
+*.build_log.htm
+
+# Debugger and IDE state
+*.log
+*.bak
+*.tmp
+*.user
+*.launch
+.vscode/
+.idea/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Operating system metadata
+.DS_Store
+Thumbs.db
+Desktop.ini

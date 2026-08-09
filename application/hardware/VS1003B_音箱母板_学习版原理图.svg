@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1100" viewBox="0 0 1600 1100">
+<rect width="1600" height="1100" fill="#fffefa"/>
+<style>
+.frame{fill:none;stroke:#b91c1c;stroke-width:2}.box{fill:#fffefa;stroke:#111827;stroke-width:2}.wire{stroke:#111827;stroke-width:2;fill:none}.power{stroke:#dc2626;stroke-width:2;fill:none}.title{font:700 26px Arial,sans-serif;fill:#111827}.head{font:700 24px Arial,sans-serif;fill:#111827}.txt{font:16px Arial,sans-serif;fill:#111827}.net{font:15px Consolas,monospace;fill:#064eab}.small{font:13px Arial,sans-serif;fill:#374151}.red{fill:#b91c1c}.sym{fill:#fff;stroke:#111827;stroke-width:2}.pin{font:13px Arial,sans-serif;fill:#064eab}.ground{stroke:#111827;stroke-width:2}.dash{stroke:#6b7280;stroke-width:1.5;stroke-dasharray:6 4;fill:none}
+</style>
+<rect x="25" y="25" width="1550" height="1050" class="frame"/>
+<path d="M25 58H1575 M25 1042H1575 M58 25V1075 M1542 25V1075" class="frame"/>
+<text x="75" y="50" class="small">A</text><text x="1560" y="50" class="small">A</text><text x="75" y="1065" class="small">D</text><text x="1560" y="1065" class="small">D</text>
+<text x="60" y="90" class="title">VS1003B 蓝牙音箱母板原理图（学习版）</text>
+<text x="60" y="116" class="small">依据 STM32F407 工程实际 GPIO / SPI 配置；不含蜂鸣器</text>
+
+<!-- power -->
+<rect x="75" y="150" width="340" height="250" class="box"/>
+<text x="180" y="185" class="head">电源接口</text>
+<rect x="130" y="220" width="90" height="120" class="sym"/>
+<text x="148" y="244" class="txt">J1</text><text x="237" y="245" class="pin">VIN_5V</text><text x="237" y="275" class="pin">GND</text><text x="237" y="305" class="pin">3V3</text>
+<path d="M220 240H285 M220 270H285 M220 300H285" class="wire"/>
+<path d="M285 240v-30 M285 210h45" class="power"/><text x="333" y="214" class="net">VBUS_5V</text>
+<path d="M285 300v35 M285 335h45" class="power"/><text x="333" y="340" class="net">+3V3</text>
+<path d="M285 270h45 M330 265v15 M320 280h20 M323 285h14 M326 290h8" class="ground"/><text x="348" y="275" class="net">GND</text>
+<rect x="300" y="220" width="85" height="55" class="sym"/><text x="315" y="242" class="small">C1</text><text x="315" y="260" class="small">100nF</text>
+<text x="105" y="375" class="small">输入：5V；3.3V 由主控板提供或另设稳压</text>
+
+<!-- F407 -->
+<rect x="455" y="150" width="590" height="400" class="box"/>
+<text x="675" y="185" class="head">F407 主控插座</text>
+<rect x="610" y="230" width="280" height="220" class="sym"/>
+<text x="710" y="270" class="head">J2</text><text x="665" y="300" class="txt">STM32F407 模块</text><text x="650" y="330" class="small">按开发板丝印 GPIO 连接</text><text x="675" y="365" class="net">3V3 / GND / NRST</text><text x="675" y="392" class="net">SWDIO / SWCLK</text><text x="675" y="419" class="net">PAx~PDx 扩展</text>
+<!-- left pins -->
+<path d="M610 285H540 M610 315H540 M610 345H540 M610 375H540 M610 405H540" class="wire"/>
+<text x="470" y="289" class="pin">PA5 VS_SCK</text><text x="470" y="319" class="pin">PA6 VS_MISO</text><text x="470" y="349" class="pin">PA7 VS_MOSI</text><text x="470" y="379" class="pin">PA4 VS_XCS</text><text x="470" y="409" class="pin">PA3 VS_XDCS</text>
+<!-- right pins -->
+<path d="M890 285H970 M890 315H970 M890 345H970 M890 375H970 M890 405H970" class="wire"/>
+<text x="915" y="289" class="pin">PB0 VS_DREQ</text><text x="915" y="319" class="pin">PB1 VS_XRST</text><text x="915" y="349" class="pin">PB10 SD_SCK</text><text x="915" y="379" class="pin">PB14 SD_MISO</text><text x="915" y="409" class="pin">PC3 SD_MOSI</text>
+<path d="M610 475H540 M890 475H970" class="wire"/><text x="475" y="480" class="pin">PC1 SD_CS</text><text x="915" y="480" class="pin">PC13 KEY1</text>
+
+<!-- VS1003 -->
+<rect x="75" y="455" width="340" height="300" class="box"/><text x="175" y="490" class="head">VS1003B 模块</text>
+<rect x="150" y="535" width="150" height="145" class="sym"/><text x="200" y="565" class="txt">J3</text><text x="174" y="595" class="small">VS1003B</text><text x="174" y="620" class="small">SPI 音频解码</text><text x="174" y="645" class="small">LINEOUT L/R</text>
+<path d="M150 565H100 M150 590H100 M150 615H100 M150 640H100 M150 665H100" class="wire"/>
+<text x="82" y="569" class="pin">SCLK</text><text x="82" y="594" class="pin">MISO</text><text x="82" y="619" class="pin">MOSI</text><text x="82" y="644" class="pin">XCS/XDCS</text><text x="82" y="669" class="pin">DREQ/XRST</text>
+<path d="M300 570H355 M300 600H355 M300 630H355" class="wire"/><text x="310" y="566" class="pin">+3V3</text><text x="310" y="596" class="pin">GND</text><text x="310" y="626" class="pin">AUDIO_L/R</text>
+<path d="M335 600v20 M325 620h20 M328 625h14 M331 630h8" class="ground"/>
+
+<!-- SD -->
+<rect x="1085" y="150" width="430" height="300" class="box"/><text x="1255" y="185" class="head">MicroSD 卡座</text>
+<rect x="1240" y="235" width="130" height="150" class="sym"/><text x="1285" y="265" class="txt">J4</text><text x="1265" y="300" class="small">MicroSD</text><text x="1265" y="328" class="small">SPI 模式</text><text x="1265" y="356" class="small">3.3V only</text>
+<path d="M1240 260H1160 M1240 290H1160 M1240 320H1160 M1240 350H1160 M1370 260H1450 M1370 290H1450" class="wire"/>
+<text x="1095" y="264" class="pin">CLK ← PB10</text><text x="1095" y="294" class="pin">DO ← PB14</text><text x="1095" y="324" class="pin">DI ← PC3</text><text x="1095" y="354" class="pin">CS ← PC1</text><text x="1380" y="264" class="pin">+3V3</text><text x="1380" y="294" class="pin">GND</text>
+<text x="1100" y="420" class="small">C2 100nF；SPI 信号预留 22~47Ω 串联电阻</text>
+
+<!-- Bluetooth -->
+<rect x="1085" y="480" width="430" height="275" class="box"/><text x="1240" y="515" class="head">蓝牙模块接口</text>
+<rect x="1240" y="560" width="130" height="125" class="sym"/><text x="1285" y="590" class="txt">J5</text><text x="1260" y="620" class="small">通用 1×6</text><text x="1260" y="645" class="small">BT 模块插座</text>
+<path d="M1240 580H1160 M1240 605H1160 M1240 630H1160 M1370 580H1450 M1370 605H1450 M1370 630H1450" class="wire"/>
+<text x="1095" y="584" class="pin">BT_VCC</text><text x="1095" y="609" class="pin">BT_GND</text><text x="1095" y="634" class="pin">BT_TX</text><text x="1380" y="584" class="pin">BT_RX</text><text x="1380" y="609" class="pin">BT_EN</text><text x="1380" y="634" class="pin">BT_STATE</text>
+<text x="1100" y="720" class="small">供电电压、电平和串口 GPIO 按实际蓝牙模块确认</text>
+
+<!-- keys -->
+<rect x="455" y="590" width="590" height="270" class="box"/><text x="720" y="625" class="head">五个按键</text>
+<g class="sym"><rect x="530" y="680" width="80" height="55"/><rect x="650" y="680" width="80" height="55"/><rect x="770" y="680" width="80" height="55"/><rect x="890" y="680" width="80" height="55"/><rect x="590" y="780" width="80" height="55"/></g>
+<path d="M570 680v-35 M690 680v-35 M810 680v-35 M930 680v-35 M630 780v-35" class="wire"/>
+<text x="555" y="712" class="txt">KEY1</text><text x="675" y="712" class="txt">KEY2</text><text x="795" y="712" class="txt">KEY3</text><text x="915" y="712" class="txt">KEY4</text><text x="615" y="812" class="txt">KEY5</text>
+<text x="535" y="654" class="net">PC13</text><text x="655" y="654" class="net">PD0</text><text x="775" y="654" class="net">PD1</text><text x="895" y="654" class="net">PD2</text><text x="595" y="754" class="net">PD3</text>
+<path d="M570 735v35 M690 735v35 M810 735v35 M930 735v35 M630 835v15" class="wire"/><path d="M560 770h20 M563 775h14 M566 780h8 M680 770h20 M683 775h14 M686 780h8 M800 770h20 M803 775h14 M806 780h8 M920 770h20 M923 775h14 M926 780h8 M620 850h20 M623 855h14 M626 860h8" class="ground"/><text x="735" y="815" class="small">按下接 GND，GPIO 内部上拉，低电平有效</text>
+
+<!-- audio + SWD -->
+<rect x="75" y="790" width="340" height="150" class="box"/><text x="175" y="825" class="head">音频输出</text><rect x="155" y="850" width="130" height="55" class="sym"/><text x="200" y="885" class="txt">J6</text><path d="M285 865H360 M285 890H360" class="wire"/><text x="295" y="861" class="pin">AUDIO_L</text><text x="295" y="887" class="pin">AUDIO_R</text><text x="105" y="925" class="small">接外部功放或耳机接口</text>
+<rect x="1085" y="790" width="430" height="150" class="box"/><text x="1260" y="825" class="head">SWD 调试接口</text><rect x="1240" y="850" width="130" height="55" class="sym"/><text x="1285" y="885" class="txt">J7</text><path d="M1240 862H1160 M1240 887H1160 M1370 862H1450 M1370 887H1450" class="wire"/><text x="1095" y="866" class="pin">SWDIO</text><text x="1095" y="891" class="pin">SWCLK</text><text x="1380" y="866" class="pin">NRST</text><text x="1380" y="891" class="pin">GND</text>
+
+<!-- title block -->
+<rect x="455" y="900" width="590" height="140" class="box"/><path d="M455 940H1045 M455 980H1045 M780 900V1040" class="frame"/>
+<text x="475" y="928" class="small">原理图名称</text><text x="800" y="928" class="txt">VS1003B 蓝牙音箱母板</text><text x="475" y="968" class="small">版本</text><text x="800" y="968" class="txt">学习版 V1.0</text><text x="475" y="1008" class="small">说明</text><text x="800" y="1008" class="small">F407 / VS1003B / MicroSD / BT / 5KEY</text>
+</svg>
